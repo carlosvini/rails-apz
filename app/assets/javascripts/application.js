@@ -43,9 +43,10 @@ ready = function() {
 $(document).ready(ready);
 $(document).on('page:load', ready);
 
+
 function weather() {
-  var url = 'http://api.openweathermap.org/data/2.5/weather?q=Sao_Paulo,br&units=metric'
-  $.getJSON(url, function(data) {
-    $('#weather').html('Sao Paulo: ' + data.main.temp + ' Celsius');
+  $.getJSON("/weather", function(data) {
+    var datetime = new Date(data.datetime*1000);
+    $('#weather').html('Sao Paulo: ' + data.main.temp + ' Celsius - Last update: ' + datetime.toString());
   });
 }

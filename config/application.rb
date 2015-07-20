@@ -35,5 +35,6 @@ module RailsApz
       enable_starttls_auto: true
     }
     config.active_job.queue_adapter = :sidekiq
+    config.cache_store = :redis_store
   end
 end
