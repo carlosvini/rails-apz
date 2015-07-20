@@ -50,3 +50,8 @@ gem 'sinatra', require: nil
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'redis-rails'
 gem 'codeclimate-test-reporter', group: :test, require: nil
+gem 'pg'
+
+# Use Unicorn as the app server
+gem 'unicorn'
+gem 'rails_12factor'
