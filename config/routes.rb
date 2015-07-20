@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  get 'recommendations/new'
+
   root 'welcome#index'
   
   # get 'welcome/index'
 
   resources :authors
-  resources :articles
+  resources :articles do
+	resources :recommendations, only: [:new, :create]
+  end
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
