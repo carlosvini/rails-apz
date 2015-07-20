@@ -14,9 +14,9 @@ class RecommendationsController < ApplicationController
         email: recommendation_params[:email]
     })
     respond_to do |format|
-      if @recommendation.valid? && @recommendation.send?
-        format.html { redirect_to articles_url, notice: 'Recommendation was successfully created.' }
-        format.json { render json: @recommendation }
+      if @recommendation.valid? && verify_recaptcha(model: @recomendation) && @recommendation.send?
+	format.html { redirect_to articles_url, notice: 'Recommendation was successfully created.' }
+        format.json { render json: @recomendation }
       else
         format.html { render :new }
         format.json { render json: @recommendation.errors, status: :unprocessable_entity }
